@@ -1,77 +1,123 @@
+/* 🌤 Base Styles */
 body {
-    background: #8C52FF;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #a2d9ff, #e0f7ff);
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
+    padding: 20px;
 }
 
 #weather-container {
-    background: rgba(255, 255, 255, 0.3);
-    max-width: 400px;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
+    max-width: 420px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 100, 200, 0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-h2, label, p {
-    color: #fff;
+#weather-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 100, 200, 0.3);
+}
+
+h2 {
+    color: #004c8c;
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+label, p {
+    color: #003b73;
     margin: 8px 0;
 }
 
 input {
     width: calc(100% - 16px);
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
-    border-radius: 10px;
-    border: 1px solid white;
+    border-radius: 12px;
+    border: 1px solid #b3e5fc;
     margin-top: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    color: #004c8c;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+}
+
+input:focus {
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
 }
 
 button {
-    background: #debff4;
+    background: linear-gradient(135deg, #5dade2, #85c1e9);
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     margin-top: 20px;
-    width: 100px;
-    font-size: 15px;
+    width: 120px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background: #8b48d7;
+    background: linear-gradient(135deg, #3498db, #2e86c1);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+    transform: scale(1.05);
 }
 
 #temp-div p {
     font-size: 60px;
-    margin-top: -30px;
+    margin-top: -20px;
+    color: #004c8c;
+    text-shadow: 0 0 10px rgba(173, 216, 230, 0.8);
 }
 
 #weather-info {
     font-size: 20px;
+    color: #004c8c;
 }
 
 #weather-icon {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 10px; 
-    margin-bottom: 0;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 10px;
     display: none;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
 }
 
 #hourly-forecast {
-    margin-top: 50px;
+    margin-top: 40px;
     overflow-x: auto;
     white-space: nowrap;
     display: flex;
     justify-content: space-between;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 150, 255, 0.4) transparent;
+    padding-bottom: 10px;
+}
+
+#hourly-forecast::-webkit-scrollbar {
+    height: 6px;
+}
+
+#hourly-forecast::-webkit-scrollbar-thumb {
+    background: rgba(0, 150, 255, 0.4);
+    border-radius: 4px;
 }
 
 .hourly-item {
@@ -80,17 +126,119 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 10px;
-    color: white;
+    margin-right: 12px;
+    color: #004c8c;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 10px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.hourly-item:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .hourly-item img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     margin-bottom: 5px;
 }
 
 #hourly-heading {
-    color: #fff;
-    margin-top: 10px;
+    color: #003b73;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* 🌈 Responsive Design */
+
+/* Tablets and smaller desktops */
+@media (max-width: 900px) {
+    #weather-container {
+        max-width: 360px;
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    button {
+        width: 100px;
+        font-size: 15px;
+    }
+
+    #temp-div p {
+        font-size: 50px;
+    }
+}
+
+/* Large mobile devices (portrait) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    #weather-container {
+        padding: 20px;
+        max-width: 95%;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    #temp-div p {
+        font-size: 45px;
+    }
+
+    #weather-icon {
+        width: 140px;
+        height: 140px;
+    }
+
+    #hourly-forecast {
+        gap: 6px;
+    }
+
+    .hourly-item {
+        width: 70px;
+        font-size: 13px;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 400px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    #temp-div p {
+        font-size: 40px;
+    }
+
+    #weather-icon {
+        width: 120px;
+        height: 120px;
+    }
+
+    input, button {
+        font-size: 14px;
+    }
+
+    .hourly-item {
+        width: 65px;
+    }
 }
